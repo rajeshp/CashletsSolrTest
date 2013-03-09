@@ -1,11 +1,16 @@
 package controllers;
 
+import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.impl.HttpSolrServer;
+import org.apache.solr.common.SolrDocument;
+import org.apache.solr.common.SolrInputDocument;
 import play.*;
 import play.mvc.*;
 
 import java.util.*;
 
 import models.*;
+import utils.CashletsConfig;
 
 public class Application extends Controller {
 
@@ -49,6 +54,32 @@ public class Application extends Controller {
                iServiceObj.price= new Double(price);
 
                iServiceObj.save();
+
+
+                SolrInputDocument  doc = new SolrInputDocument();
+                doc.addField("id",iServiceObj.sid);
+                doc.addField("title",title);
+                doc.addField("description",desc);
+                doc.addField("location",location);
+                doc.addField("price",price);
+
+                String url = CashletsConfig.SOLR_SEVER_URL;
+                SolrServer solrserver = new HttpSolrServer(url);
+
+                try
+                {
+                solrserver.add(doc);
+                solrserver.commit();
+                }
+                catch(Exception e)
+                {
+                    Logger.error("Exception occured while adding Document to SOLR : ", e);
+                }
+
+
+
+
+
 
 
             }

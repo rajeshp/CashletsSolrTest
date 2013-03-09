@@ -1,8 +1,10 @@
 package models;
 
+import org.hibernate.annotations.GenericGenerator;
+import play.db.jpa.GenericModel;
 import play.db.jpa.Model;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -13,12 +15,20 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 
-@Entity(name = "i_service")
+@Entity
+@Table(name="i_service")
+//@AttributeOverride(name = "id", column = @Column(name = "sid"))
 
-public class iService extends Model {
-   public String sid;
-   public String uid;
-   public Date delivery_time;
+public class iService extends GenericModel {
+
+
+    @Id
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    public String sid;
+
+    public String uid;
+    public Date delivery_time;
     public String title;
     public String description;
     public String location;
