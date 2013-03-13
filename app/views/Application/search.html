@@ -17,8 +17,17 @@
 
 <h1 align="center"><font color="#0000CC"> Services List </font> </h1>
 
+<br>
 
-<div style="position:absolute; top:20%;left:5%;right:10%;width:90%">
+#{if query!=null }
+
+    <h2 style="position:absolute;top:20%;left:40%"> Search Results for ${query} </h2>
+
+#{/if}
+
+<br>
+
+<div style="position:absolute; top:30%;left:5%;right:10%;width:90%">
 <table align="center" width="80%" border="0" cellspacing="0" cellpadding="2" bordercolor="black" style="border-width:1px">
 
     <tr style="background-color:#507CD1; color:White">
@@ -46,7 +55,13 @@
 
     <td align="left" valign="top" style="text-align:center;width:80px"> <input type="checkbox" name="<% out.println(rs.getString(1)); %>" value="ON"> </td>
 
+        #{if query!=null }
+    <td align="left" valign="top" style="text-align:center;width:80px"> ${service.id}  </td>
+        #{/if}
+        #{else}
     <td align="left" valign="top" style="text-align:center;width:80px"> ${service.sid}  </td>
+
+        #{/else}
     <td align="left" valign="top" style="text-align:center;width:200px"> ${service.title} </td>
     <td align="left" valign="top" style="text-align:center"> ${service.description} </td>
     <td align="left" valign="top" style="text-align:center"> ${service.location} </td>

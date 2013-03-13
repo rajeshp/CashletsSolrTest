@@ -150,7 +150,7 @@ public class Application extends Controller {
 
 
 
-       render(serviceList);
+       render(query, serviceList);
     }
 
 
