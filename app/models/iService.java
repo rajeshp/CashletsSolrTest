@@ -23,8 +23,8 @@ public class iService extends GenericModel {
 
 
     @Id
-    @GeneratedValue(generator = "system-uuid")
-    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    @GeneratedValue
+
     public String sid;
 
     public String uid;

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Search Page</title>
+</head>
+<body>
+
+<div style="position:absolute; top:10%;left:30%;width=80%">
+
+    #{form @Application.search(), method:'GET' }
+
+<input type="text" name="query" id="query" size="50"/> <input type="submit" value="Search" />
+
+    #{/form}
+
+</div>
+
+<h1 align="center"><font color="#0000CC"> Services List </font> </h1>
+
+
+<div style="position:absolute; top:20%;left:5%;right:10%;width:90%">
+<table align="center" width="80%" border="0" cellspacing="0" cellpadding="2" bordercolor="black" style="border-width:1px">
+
+    <tr style="background-color:#507CD1; color:White">
+
+
+        <TH style="font-size:12px; text-align:center;" >	<font face="Verdana"> Select </font> </TH>
+
+        <TH style="font-size:12px; text-align:center"> <font face="Verdana"> Service ID </font></TH>
+
+        <TH style="font-size:12px; text-align:center"> <font face="Verdana"> Title </font> </TH>
+
+        <TH style="font-size:12px; text-align:center"> <font face="Verdana"> Description </font> </TH>
+
+        <TH style="font-size:12px; text-align:center"> <font face="Verdana"> Location </font> </TH>
+
+        <TH style="font-size:12px; text-align:center"> <font face="Verdana"> Price </font> </TH>
+
+    </tr>
+
+
+
+    #{list serviceList, as : 'service'}
+
+    <tr>
+
+    <td align="left" valign="top" style="text-align:center;width:80px"> <input type="checkbox" name="<% out.println(rs.getString(1)); %>" value="ON"> </td>
+
+    <td align="left" valign="top" style="text-align:center;width:80px"> ${service.sid}  </td>
+    <td align="left" valign="top" style="text-align:center;width:200px"> ${service.title} </td>
+    <td align="left" valign="top" style="text-align:center"> ${service.description} </td>
+    <td align="left" valign="top" style="text-align:center"> ${service.location} </td>
+    <td align="left" valign="top" style="text-align:center"> ${service.price} </td>
+
+    </tr>
+
+    #{/list}
+</table>
+
+</div>
+
+</body>
+
+
+</html>

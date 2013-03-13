@@ -9,7 +9,7 @@ package utils;
  */
 public class CashletsConfig {
 
-    public static final String SOLR_SEVER_URL = "http://localhost:8080/solr/";
+    public static final String SOLR_SEVER_URL = "http://localhost:8983/solr/";
 
 
 
