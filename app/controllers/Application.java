@@ -23,7 +23,7 @@ import utils.CashletsConstants;
 public class Application extends Controller {
 
     public static void index() {
-        render();
+        search(null);
     }
 
     /*
