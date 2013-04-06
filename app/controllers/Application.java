@@ -23,7 +23,7 @@ import utils.CashletsConstants;
 public class Application extends Controller {
 
     public static void index() {
-        search(null);
+        search(null,null,"json");
     }
 
     /*
@@ -157,7 +157,7 @@ public class Application extends Controller {
         }
 
 
-        if(query!=null)
+        if(query!=null && !query.equals(""))
         {
             //do solr search
 
@@ -228,8 +228,8 @@ public class Application extends Controller {
             //show all records from mysql db
 
             Logger.info("Showing records from mysql db");
-            List<iService> iServicesList = iService.findAll();
-
+           // List<iService> iServicesList = iService.findAll();
+            List<iService> iServicesList = iService.find("order by createdOn desc").from(offset).fetch(limit);
 
             serviceList = iServicesList;
 
@@ -278,9 +278,6 @@ public class Application extends Controller {
         {
          Logger.error("Exception occured while cleaning application data :"+e);
         }
-
-
-
 
     }
 
